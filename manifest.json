@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Chat translate",
+  "description": "Translate Twitch chat",
+  "author": "Douglas M Dantas",
+  "version": "0.1",
+  "permissions": ["storage"],
+  "host_permissions": ["https://twitch.tv/*", "http://dmd.dev.br/*"],
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Replace URL"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.twitch.tv/*", "https://twitch.tv/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "world": "ISOLATED"
+    }
+  ],
+  "background": {
+    "service_worker": "service_worker.js"
+  }
+}
